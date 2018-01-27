@@ -8,6 +8,7 @@ TagManager:
   - ToDestroy
   - Talk
   - Alo
+  - Activate
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class ManageDialoguesScript : MonoBehaviour
     {
         public string Actor;
         public string dialog;
+        public AudioClip voice;
     }
     public Dialogue[] dialoguesList;
 
@@ -28,12 +29,15 @@ public class ManageDialoguesScript : MonoBehaviour
 
     private WriteDialogueScript target;
 
+    private GameObject directLight;
+
     public float turnLightsIndex;
 
     private int index = 0;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+     
 
         TurnLightingOff();
 
@@ -43,8 +47,10 @@ public class ManageDialoguesScript : MonoBehaviour
 
         dialogueScripts = new List<WriteDialogueScript>();
 
+        Debug.Log("Started");
         foreach (var g in GameObject.FindGameObjectsWithTag("Talk"))
         {
+            Debug.Log("Found object with tag wtf");
             dialogueScripts.Add(g.GetComponent<WriteDialogueScript>());
         }
 
@@ -86,8 +92,11 @@ public class ManageDialoguesScript : MonoBehaviour
 
     public void TurnLightingOff()
     {
+    //    RenderSettings.ambientLight = new Color(1.0f, 1.0f, 1.0f);
         RenderSettings.ambientIntensity = 0;
         RenderSettings.reflectionIntensity = 0;
+        directLight = GameObject.FindGameObjectWithTag("Activate");
+        directLight.SetActive(false);
     }
 
     public void TurnLightingOn()
@@ -95,8 +104,11 @@ public class ManageDialoguesScript : MonoBehaviour
        var d = GameObject.FindGameObjectsWithTag("ToDestroy");
         foreach (var o in d)
             Destroy(o);
+
+    //    RenderSettings.ambientLight = new Color(0.5f, 0.5f,0.5f);
         RenderSettings.ambientIntensity = 1;
         RenderSettings.reflectionIntensity = 1;
+       directLight.SetActive(true);
 
     }
 
@@ -122,6 +134,12 @@ public class ManageDialoguesScript : MonoBehaviour
             target = dialogueScripts.Find(x => x.gameObject.name == Name);
 
             target.setDialogueToWrite(dialog);
+
+            if (dialoguesList[index].voice != null)
+            {
+                target.GetComponentInChildren<AudioSource>().clip = dialoguesList[index].voice;
+                target.GetComponentInChildren<AudioSource>().Play();
+            }
 
             if (dialog == PlayerMovieAtDialog)
                 PlayMovie();
