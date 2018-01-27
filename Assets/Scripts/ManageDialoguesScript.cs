@@ -33,6 +33,8 @@ public class ManageDialoguesScript : MonoBehaviour
 
     public float turnLightsIndex;
 
+    private bool turningLightsOn = false;
+
     private int index = 0;
     // Use this for initialization
     void Awake()
@@ -88,6 +90,10 @@ public class ManageDialoguesScript : MonoBehaviour
             SceneManager.LoadScene(scene.name);
         }
 
+        if (turningLightsOn)
+        {
+            TurningOnLights();
+        }
     }
 
     public void TurnLightingOff()
@@ -101,14 +107,14 @@ public class ManageDialoguesScript : MonoBehaviour
 
     public void TurnLightingOn()
     {
+
        var d = GameObject.FindGameObjectsWithTag("ToDestroy");
         foreach (var o in d)
             Destroy(o);
 
+        turningLightsOn = true;
     //    RenderSettings.ambientLight = new Color(0.5f, 0.5f,0.5f);
-        RenderSettings.ambientIntensity = 1;
-        RenderSettings.reflectionIntensity = 1;
-       directLight.SetActive(true);
+       
 
     }
 
@@ -149,16 +155,29 @@ public class ManageDialoguesScript : MonoBehaviour
 
             index++;
 
-           
         }
-
             
-       
     }
 
 
     void PlayMovie()
     {
         GameObject.Find("Television").GetComponent<TelevisionMovement>().Move("Down");
+    }
+
+
+    void TurningOnLights()
+    {
+        directLight.SetActive(true);
+        RenderSettings.ambientIntensity += 0.01f;
+        RenderSettings.reflectionIntensity += 0.01f;
+
+        directLight.GetComponent<Light>().intensity += 0.01f;
+      
+        if (RenderSettings.ambientIntensity >= 1.0f)
+        {
+            directLight.SetActive(true);
+            turningLightsOn = false;
+        }
     }
 }
