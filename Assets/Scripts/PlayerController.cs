@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,19 +30,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        anim.SetFloat("VelocityY", rb.velocity.y);
-        anim.SetFloat("VelocityX", rb.velocity.x);
-        anim.SetBool("Grounded", Grounded);
-
+        //Move Horizontally
         float hAxis = Input.GetAxis("Horizontal");
-        //float vAxis = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(hAxis, 0.0f, 0.0f) * HorizontalSpeed * Time.deltaTime;
         rb.transform.Translate(movement);
 
-        //anim.SetFloat("VelocityX", movement.x);
+        // Update animator stuff
+        anim.SetBool("Walking", Math.Abs(movement.x) != 0);
         
-
+        
+        // Flip player according to direction
         bool flip = sr.flipX ? movement.x < 0.01f : movement.x > 0.01f;
         if (flip)
         {
@@ -52,8 +50,8 @@ public class PlayerController : MonoBehaviour
         {
             if (JumpCount > 0)
             {
-                Grounded = false;
-                
+                anim.SetBool("Grounded", false);
+                anim.SetBool("Jumping", true);
                 rb.velocity = Vector3.up * JumpVelocity;
                 JumpCount -= 1;
             }
@@ -67,17 +65,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (LowJumpMultiplier - 1) * Time.deltaTime;
         }
-
-        // Update animator stuff
-        
-        
     }
     void OnCollisionEnter(Collision Col)
     {
         if (Col.gameObject.layer == LayerMask.NameToLayer("Default"))
         {
-            Grounded = true;
-            //anim.SetBool("Grounded", Grounded);
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Grounded", true);
             JumpCount = MaxJumps;
         }
 
