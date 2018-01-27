@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         // Update animator stuff
         anim.SetBool("Walking", Math.Abs(movement.x) != 0);
 
-        newOffset += new Vector2(movement.x * 0.05f, 0);
+        newOffset += new Vector2(movement.x * -0.003f, 0);
         TransTex.material.SetTextureOffset("_Noise", newOffset);
 
 
