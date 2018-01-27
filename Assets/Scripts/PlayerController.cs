@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
 
-    public RawImage TransTex;
+    //public RawImage TransTex;
 
     private Vector3 movement;
 
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Walking", Math.Abs(movement.x) != 0);
 
         newOffset += new Vector2(movement.x * 0.05f, 0);
-        TransTex.material.SetTextureOffset("_Noise", newOffset);
+        //TransTex.material.SetTextureOffset("_Noise", newOffset);
 
 
         // Flip player according to direction
