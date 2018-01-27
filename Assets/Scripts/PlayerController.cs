@@ -53,5 +53,20 @@ public class PlayerController : MonoBehaviour
         {
             JumpCount = MaxJumps;
         }
+
+        if (Col.gameObject.tag == "Platform")
+        {
+            transform.parent = Col.transform;
+        }
+    }
+
+    void OnCollisionExit(Collision Col)
+    {
+        Debug.Log(Col);
+
+        if (Col.gameObject.tag == "Platform")
+        {
+            transform.parent = null;
+        }
     }
 }
