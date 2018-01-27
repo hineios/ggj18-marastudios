@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(hAxis, 0.0f, 0.0f) * hSpeed * Time.deltaTime;
 
-        if (IsGrounded() && Input.GetButtonDown("Jump"))
+
+        Debug.Log(Input.GetJoystickNames()[0]);
+
+        if (IsGrounded() && ((Input.GetJoystickNames()[0].Contains("Xbox") && Input.GetKeyDown("joystick button 0")) || (Input.GetJoystickNames()[0].Contains("360") && Input.GetKeyDown("joystick button 1"))))
         {
             rig.AddForce(Vector3.up * vSpeed, ForceMode.Impulse);
             //rig.velocity = Vector3.up * vSpeed;
