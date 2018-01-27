@@ -18,11 +18,11 @@ public class ShitshakeSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) <= 20 && Mathf.Abs(player.transform.position.x - transform.position.x) > 5)
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) <= 30 && Mathf.Abs(player.transform.position.x - transform.position.x) > 5)
         {
             if (countdown == 0)
             {
-                GameObject t = Instantiate(prefab, transform.position, transform.rotation);
+                GameObject t = Instantiate(prefab, transform.position, Quaternion.identity);
                 countdown = 150;
             }
             else

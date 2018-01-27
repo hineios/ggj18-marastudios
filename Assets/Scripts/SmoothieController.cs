@@ -6,6 +6,8 @@ public class SmoothieController : MonoBehaviour {
 
     public float smoothieStrenght;
 
+    private int timeout = 0;
+
     private Rigidbody rig;
     // Use this for initialization
     void Start()
@@ -16,6 +18,14 @@ public class SmoothieController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        rig.AddForce(Vector3.right * -smoothieStrenght);
+        if(timeout == 10)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            rig.AddForce(Vector3.right * -smoothieStrenght);
+            timeout++;
+        }
     }
 }

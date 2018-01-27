@@ -13,14 +13,13 @@ public class MilkshakeSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player_human");
-        prefab = GameObject.Find("Milkshake");
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
 
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) <= 20 && Mathf.Abs(player.transform.position.x - transform.position.x) > 5)
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) <= 30 && Mathf.Abs(player.transform.position.x - transform.position.x) > 5)
         {
             if (countdown == 0)
             {
