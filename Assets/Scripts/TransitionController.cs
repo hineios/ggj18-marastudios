@@ -25,6 +25,7 @@ public class TransitionController : MonoBehaviour {
 
     private RenderTexture test;
 
+    private float tempTexValue;
 
     // Use this for initialization
     void Start () {
@@ -57,29 +58,36 @@ public class TransitionController : MonoBehaviour {
 
         if (transitioning)
         {
-            if (grow && shaderValue > 0f)
+            newShaderValue = shaderValue;
+            if (grow && shaderValue > -0.05f)
             {
-                newShaderValue -= Time.deltaTime * 0.2f;
+                newShaderValue -= Time.deltaTime * 0.5f;
                 camMaterial.SetFloat("_Clipping", newShaderValue);
             }
-            if (grow && shaderValue <= 0)
+            if (grow && shaderValue <= -0.05)
             {
                 grow = false;
                 Transition();
             }
-            if(!grow && shaderValue < 0.07f)
+            if (!grow && shaderValue < tempTexValue)
             {
-                newShaderValue += Time.deltaTime * 0.2f;
+                newShaderValue += Time.deltaTime * 0.5f;
                 camMaterial.SetFloat("_Clipping", newShaderValue);
             }
-            if (!grow && shaderValue >= 0.07f)
+            if (!grow && shaderValue >= tempTexValue)
             {
                 grow = true;
                 transitioning = false;
             }
 
         }
-	}
+        else
+        {
+            camMaterial.SetFloat("_Clipping", Mathf.PingPong(Time.time * 0.04f, 0.04f) + 0.03f);
+            tempTexValue = camMaterial.GetFloat("_Clipping");
+        }
+
+    }
 
     public void Transition()
     {
