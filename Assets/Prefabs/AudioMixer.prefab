@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6caf457f5e6e04da3d8e42db867427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Listener: {fileID: 1401695379320524, guid: 54bb71ba5936aac49be4c572c6059afb, type: 2}
-  AudioSource: {fileID: 1723313457861198, guid: aebcbc759a1694a4292c6a7de21d5554,
-    type: 2}
+  Listener: {fileID: 0}
+  AudioSource: {fileID: 0}
   Mixer: {fileID: 24100000, guid: d3cce61e1c36e604f85799c1d2cd02a3, type: 2}
