@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlayerController : MonoBehaviour
     public int JumpCount = 0;
     private bool Grounded;
 
+    private float baseY;
+
+    private Vector2 newOffset;
+
     // Move Stuff
     public float HorizontalSpeed = 2.0f;
 
@@ -20,25 +25,33 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
 
+    public RawImage TransTex;
+
+    private Vector3 movement;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         JumpCount = MaxJumps;
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        baseY = 0;
     }
 
     void Update()
     {
         //Move Horizontally
         float hAxis = Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(hAxis, 0.0f, 0.0f) * HorizontalSpeed * Time.deltaTime;
+        movement = new Vector3(hAxis, 0.0f, 0.0f) * HorizontalSpeed * Time.deltaTime;
         rb.transform.Translate(movement);
 
         // Update animator stuff
         anim.SetBool("Walking", Math.Abs(movement.x) != 0);
-        
-        
+
+        newOffset += new Vector2(movement.x * 0.05f, 0);
+        TransTex.material.SetTextureOffset("_Noise", newOffset);
+
+
         // Flip player according to direction
         bool flip = sr.flipX ? movement.x < 0.01f : movement.x > 0.01f;
         if (flip)
@@ -54,6 +67,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Jumping", true);
                 rb.velocity = Vector3.up * JumpVelocity;
                 JumpCount -= 1;
+                //newOffset = new Vector2(newOffset.x, -rb.velocity.y * 0.00000001f);
             }
         }
 
