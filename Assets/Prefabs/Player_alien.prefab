@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114250737113007070}
   - component: {fileID: 212229941447184250}
   - component: {fileID: 95654203186728396}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Player_alien
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 20099385335459472}
   - component: {fileID: 124832538636803432}
   - component: {fileID: 81216597579992088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera_alien
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -55,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740933757214224}
-  m_LocalRotation: {x: 0.0087273205, y: 0.000000004829909, z: 0.0000889505, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4923865086759482}
@@ -180,6 +180,7 @@ MonoBehaviour:
   MaxJumps: 1
   JumpCount: 0
   HorizontalSpeed: 2
+  TransTex: {fileID: 0}
 --- !u!124 &124832538636803432
 Behaviour:
   m_ObjectHideFlags: 1
