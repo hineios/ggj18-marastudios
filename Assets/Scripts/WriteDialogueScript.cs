@@ -27,6 +27,7 @@ public class WriteDialogueScript : MonoBehaviour {
     public bool lightsOut;
 
     private int textIndex;
+
 	// Use this for initialization
 	void Start () {
        
@@ -36,8 +37,7 @@ public class WriteDialogueScript : MonoBehaviour {
         ProcessDialogue();
         dialogueText.color = textColor;
 
-        RenderSettings.ambientIntensity = 0;
-        RenderSettings.reflectionIntensity = 0;
+        
         if (spotlight != null)
             spotlight.gameObject.SetActive(false);
     }
