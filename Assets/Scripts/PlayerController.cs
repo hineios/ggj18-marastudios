@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float hSpeed = 2.0f;
-    public float vSpeed = 15.0f;
+    public float FallMultiplier = 2.5f;
+    public float LowJumpMultiplier = 2f;
+    public float JumpVelocity = 7f;
+    public int MaxJumps = 1;
+    public int JumpCount = 0;
 
-    float distToGround;
+    public float HorizontalSpeed = 2.0f;
 
-    public LayerMask groundLayers;
     private Rigidbody rig;
-    private SphereCollider col;
 
     private void Start()
     {
-        distToGround = GetComponent<Collider>().bounds.extents.y;
-      
-
         rig = GetComponent<Rigidbody>();
-        col = GetComponent<SphereCollider>();
+        JumpCount = MaxJumps;
     }
 
     void Update()
@@ -27,23 +25,33 @@ public class PlayerController : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(hAxis, 0.0f, 0.0f) * hSpeed * Time.deltaTime;
-
-
-        Debug.Log(Input.GetJoystickNames()[0]);
-
-        if (IsGrounded() && ((Input.GetJoystickNames()[0].Contains("Xbox") && Input.GetKeyDown("joystick button 0")) || (Input.GetJoystickNames()[0].Contains("360") && Input.GetKeyDown("joystick button 1"))))
-        {
-            rig.AddForce(Vector3.up * vSpeed, ForceMode.Impulse);
-            //rig.velocity = Vector3.up * vSpeed;
-        }
-
+        Vector3 movement = new Vector3(hAxis, 0.0f, 0.0f) * HorizontalSpeed * Time.deltaTime;
         rig.transform.Translate(movement);
 
-    }
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (JumpCount > 0)
+            {
+                rig.velocity = Vector3.up * JumpVelocity;
+                JumpCount -= 1;
+            }
+        }
 
-    private bool IsGrounded()
+        
+        // Make jump better, slow down up, fasten down
+        if(rig.velocity.y < 0)
+        {
+            rig.velocity += Vector3.up * Physics.gravity.y * (FallMultiplier - 1) * Time.deltaTime;
+        } else if(rig.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rig.velocity += Vector3.up * Physics.gravity.y * (LowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
+    void OnCollisionEnter(Collision Col)
     {
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        if (Col.gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            JumpCount = MaxJumps;
+        }
     }
 }
