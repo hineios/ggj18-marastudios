@@ -25,6 +25,7 @@ public class TransitionController : MonoBehaviour {
 
     private RenderTexture test;
 
+
     // Use this for initialization
     void Start () {
         test =  new RenderTexture(Screen.width, Screen.height, 24);
@@ -58,7 +59,7 @@ public class TransitionController : MonoBehaviour {
         {
             if (grow && shaderValue > 0f)
             {
-                newShaderValue -= Time.deltaTime * 0.2f ;
+                newShaderValue -= Time.deltaTime * 0.2f;
                 camMaterial.SetFloat("_Clipping", newShaderValue);
             }
             if (grow && shaderValue <= 0)

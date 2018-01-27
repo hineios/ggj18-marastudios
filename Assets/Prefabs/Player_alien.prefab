@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114250737113007070}
   - component: {fileID: 212229941447184250}
   - component: {fileID: 95654203186728396}
+  - component: {fileID: 114996547415847638}
   m_Layer: 10
   m_Name: Player_alien
   m_TagString: Player
@@ -55,7 +56,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740933757214224}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -181,6 +182,19 @@ MonoBehaviour:
   JumpCount: 0
   HorizontalSpeed: 2
   TransTex: {fileID: 0}
+--- !u!114 &114996547415847638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401695379320524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e604967edf1ebcf42ad5a20b18034e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTimeX: 0
+  player: {fileID: 1401695379320524}
 --- !u!124 &124832538636803432
 Behaviour:
   m_ObjectHideFlags: 1
