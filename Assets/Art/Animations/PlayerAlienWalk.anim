@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerJump
+  m_Name: PlayerAlienWalk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,11 +19,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: fd7f427a8d0eb3142a4d6bd045225784, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300000, guid: 60c5fa119e2593d488220df16cd754b9, type: 3}
-    - time: 0.41666666
-      value: {fileID: 21300000, guid: abf81d0d7c4947c4e9ff92d16d4ce917, type: 3}
+      value: {fileID: 21300000, guid: e16d3a0a03ae95e4099cdfa587c5ed59, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: ec81f2912d76e6a42b8f6e77c8e109e3, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: af350c678ed381043b667ed21b68389e, type: 3}
+    - time: 0.75
+      value: {fileID: 21300000, guid: 4d70d2e0aba25a345a19c00f7605f155, type: 3}
+    - time: 0.9166667
+      value: {fileID: 21300000, guid: a563029651e1d25458bf9583f1ef90d6, type: 3}
+    - time: 1.1666666
+      value: {fileID: 21300000, guid: e16d3a0a03ae95e4099cdfa587c5ed59, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -43,20 +49,23 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: fd7f427a8d0eb3142a4d6bd045225784, type: 3}
-    - {fileID: 21300000, guid: 60c5fa119e2593d488220df16cd754b9, type: 3}
-    - {fileID: 21300000, guid: abf81d0d7c4947c4e9ff92d16d4ce917, type: 3}
+    - {fileID: 21300000, guid: e16d3a0a03ae95e4099cdfa587c5ed59, type: 3}
+    - {fileID: 21300000, guid: ec81f2912d76e6a42b8f6e77c8e109e3, type: 3}
+    - {fileID: 21300000, guid: af350c678ed381043b667ed21b68389e, type: 3}
+    - {fileID: 21300000, guid: 4d70d2e0aba25a345a19c00f7605f155, type: 3}
+    - {fileID: 21300000, guid: a563029651e1d25458bf9583f1ef90d6, type: 3}
+    - {fileID: 21300000, guid: e16d3a0a03ae95e4099cdfa587c5ed59, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 1.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
