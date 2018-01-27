@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2907a53a99ea3414e84f8d2a70ea80ba
-timeCreated: 1517035405
+guid: fc305a6ddb507084fa2025cd36a1418e
+timeCreated: 1517054155
 licenseType: Free
 VideoClipImporter:
   externalObjects: {}
@@ -17,7 +17,16 @@ VideoClipImporter:
   flipVertical: 0
   flipHorizontal: 0
   importAudio: 1
-  targetSettings: {}
+  targetSettings:
+    0:
+      enableTranscoding: 1
+      codec: 1
+      resizeFormat: 0
+      aspectRatio: 0
+      customWidth: 1
+      customHeight: 1
+      bitrateMode: 2
+      spatialQuality: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
