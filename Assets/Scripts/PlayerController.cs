@@ -80,5 +80,20 @@ public class PlayerController : MonoBehaviour
             //anim.SetBool("Grounded", Grounded);
             JumpCount = MaxJumps;
         }
+
+        if (Col.gameObject.tag == "Platform")
+        {
+            transform.parent = Col.transform;
+        }
+    }
+
+    void OnCollisionExit(Collision Col)
+    {
+        Debug.Log(Col);
+
+        if (Col.gameObject.tag == "Platform")
+        {
+            transform.parent = null;
+        }
     }
 }

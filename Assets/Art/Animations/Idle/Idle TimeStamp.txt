@@ -1,0 +1,6 @@
+Idle0 - Fica durante algum tempo (como se fosse uma pausa grande)
+Idle1 - 00:03
+Idle2 - 00:03
+Idle3 - 00:17
+Idle4 - 00:02
+Idle5 - 00:03

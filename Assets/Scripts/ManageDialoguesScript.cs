@@ -1,83 +1,136 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Video;
 
-public class ManageDialoguesScript : MonoBehaviour {
+public class ManageDialoguesScript : MonoBehaviour
+{
 
+  
+    [Serializable]
+    public struct Dialogue
+    {
+        public string Actor;
+        public string dialog;
+    }
+    public Dialogue[] dialoguesList;
 
-    public List<string> dialogueList;
+    private List<WriteDialogueScript> dialogueScripts;
 
-    public GameObject commanderCharacter;
-
-    private WriteDialogueScript mainCharacterScript;
 
     public float changeTextCooldown;
 
     private float actualCountDown;
 
+    private WriteDialogueScript target;
+
     private int index = 0;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
-        RenderSettings.ambientIntensity = 0;
-        RenderSettings.reflectionIntensity = 0;
-
-        mainCharacterScript = commanderCharacter.GetComponent<WriteDialogueScript>();
-
-        mainCharacterScript.setDialogueToWrite(dialogueList[0]);
+        TurnLightingOff();
 
         actualCountDown = changeTextCooldown;
 
-        index = 1;
-    }
-	
-	// Update is called once per frame
-	void Update () {
+        index = 0;
 
-        if (mainCharacterScript.endedCurrentDialogue())
+        dialogueScripts = new List<WriteDialogueScript>();
+
+        foreach (var g in GameObject.FindGameObjectsWithTag("Talk"))
+        {
+            dialogueScripts.Add(g.GetComponent<WriteDialogueScript>());
+        }
+
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (getTargetEndedSpeaking())
         {
             actualCountDown -= Time.deltaTime;
 
-            if(actualCountDown <= 0)
-            if (index < dialogueList.Count)
+            if (actualCountDown <= 0)
             {
+                if (index == 3)
+                    TurnLightingOn();
 
-                    if (index == 1)
-                    {
-                        RenderSettings.ambientIntensity = 1;
-                        RenderSettings.reflectionIntensity = 1;
-                    }
+                AdvanceDialogue();
 
-                    mainCharacterScript.setDialogueToWrite(dialogueList[index]);
-                index++;
-                    actualCountDown = changeTextCooldown;
-
+                actualCountDown = changeTextCooldown;
             }
 
-        } else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (index < dialogueList.Count)
-            {
-
-                if(index == 1)
-                {
-                    RenderSettings.ambientIntensity = 1;
-                    RenderSettings.reflectionIntensity = 1;
-                }
-                mainCharacterScript.setDialogueToWrite(dialogueList[index]);
-                index++;
-
-            }
         }
-
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
-
         }
 
-	}
+    }
+
+    public void TurnLightingOff()
+    {
+        RenderSettings.ambientIntensity = 0;
+        RenderSettings.reflectionIntensity = 0;
+    }
+
+    public void TurnLightingOn()
+    {
+       var d = GameObject.FindGameObjectsWithTag("ToDestroy");
+        foreach (var o in d)
+            Destroy(o);
+        RenderSettings.ambientIntensity = 1;
+        RenderSettings.reflectionIntensity = 1;
+
+        PlayMovie();
+    }
+
+    private bool getTargetEndedSpeaking()
+    {
+        if (target != null)
+        {
+            return target.endedCurrentDialogue();
+        } return true;
+    }
+
+
+    private void AdvanceDialogue()
+    {
+
+        if (index < dialoguesList.Length)
+        {
+
+            var Name = dialoguesList[index].Actor;
+
+            var dialog = dialoguesList[index].dialog;
+
+            target = dialogueScripts.Find(x => x.gameObject.name == Name);
+
+            target.setDialogueToWrite(dialog);
+
+         
+
+            index++;
+
+           
+        }
+
+            
+       
+    }
+
+
+    void PlayMovie()
+    {
+        GameObject.Find("Screen").GetComponent<VideoPlayer>().Play();
+    }
 }
