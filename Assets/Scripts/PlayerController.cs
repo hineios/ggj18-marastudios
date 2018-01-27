@@ -7,12 +7,17 @@ public class PlayerController : MonoBehaviour
     public float hSpeed = 2.0f;
     public float vSpeed = 15.0f;
 
+    float distToGround;
+
     public LayerMask groundLayers;
     private Rigidbody rig;
     private SphereCollider col;
 
     private void Start()
     {
+        distToGround = GetComponent<Collider>().bounds.extents.y;
+      
+
         rig = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
     }
@@ -26,7 +31,8 @@ public class PlayerController : MonoBehaviour
 
         if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
-            rig.velocity = Vector3.up * vSpeed;
+            rig.AddForce(Vector3.up * vSpeed, ForceMode.Impulse);
+            //rig.velocity = Vector3.up * vSpeed;
         }
 
         rig.transform.Translate(movement);
@@ -35,7 +41,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * .2f, groundLayers);
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
-
 }
