@@ -20,12 +20,15 @@ public class ManageDialoguesScript : MonoBehaviour
 
     private List<WriteDialogueScript> dialogueScripts;
 
+    public string PlayerMovieAtDialog;
 
     public float changeTextCooldown;
 
     private float actualCountDown;
 
     private WriteDialogueScript target;
+
+    public float turnLightsIndex;
 
     private int index = 0;
     // Use this for initialization
@@ -59,14 +62,18 @@ public class ManageDialoguesScript : MonoBehaviour
 
             if (actualCountDown <= 0)
             {
-                if (index == 3)
-                    TurnLightingOn();
+               
 
                 AdvanceDialogue();
 
                 actualCountDown = changeTextCooldown;
             }
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AdvanceDialogue();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -91,7 +98,6 @@ public class ManageDialoguesScript : MonoBehaviour
         RenderSettings.ambientIntensity = 1;
         RenderSettings.reflectionIntensity = 1;
 
-        PlayMovie();
     }
 
     private bool getTargetEndedSpeaking()
@@ -117,7 +123,11 @@ public class ManageDialoguesScript : MonoBehaviour
 
             target.setDialogueToWrite(dialog);
 
-         
+            if (dialog == PlayerMovieAtDialog)
+                PlayMovie();
+
+            if (index == turnLightsIndex)
+                TurnLightingOn();
 
             index++;
 
@@ -131,6 +141,6 @@ public class ManageDialoguesScript : MonoBehaviour
 
     void PlayMovie()
     {
-        GameObject.Find("Screen").GetComponent<VideoPlayer>().Play();
+        GameObject.Find("Television").GetComponent<TelevisionMovement>().Move("Down");
     }
 }
