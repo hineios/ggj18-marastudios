@@ -40,7 +40,7 @@ public class TransitionController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         shaderValue = camMaterial.GetFloat("_Clipping");
-        if (Input.GetKeyDown("e") && !transitioning)
+        if ((Input.GetKeyDown("e") || Input.GetButtonDown("Fire1")) && !transitioning)
         {
             //Transition();
             transitioning = true;
@@ -48,30 +48,30 @@ public class TransitionController : MonoBehaviour {
 
         if (isAlien)
         {
-            human.transform.localPosition = alien.transform.localPosition;
+            human.transform.position = new Vector3(alien.transform.position.x, alien.transform.position.y - 37, alien.transform.position.z);
         } else
         {
-            alien.transform.localPosition = human.transform.localPosition;
+            alien.transform.position = new Vector3(human.transform.position.x, human.transform.position.y + 37, human.transform.position.z);
         }
 
         if (transitioning)
         {
-            if (grow && shaderValue < 1.35f)
+            if (grow && shaderValue > 0f)
             {
-                newShaderValue += 3 * Time.deltaTime;
+                newShaderValue -= Time.deltaTime * 0.2f ;
                 camMaterial.SetFloat("_Clipping", newShaderValue);
             }
-            if (grow && shaderValue >= 1.35f)
+            if (grow && shaderValue <= 0)
             {
                 grow = false;
                 Transition();
             }
-            if(!grow && shaderValue > 0.75f)
+            if(!grow && shaderValue < 0.07f)
             {
-                newShaderValue -= 3 * Time.deltaTime;
+                newShaderValue += Time.deltaTime * 0.2f;
                 camMaterial.SetFloat("_Clipping", newShaderValue);
             }
-            if (!grow && shaderValue <= 0.75f)
+            if (!grow && shaderValue >= 0.07f)
             {
                 grow = true;
                 transitioning = false;
@@ -92,7 +92,7 @@ public class TransitionController : MonoBehaviour {
             humanCam.targetTexture = null;
             alienCam.targetTexture = test;
             alienCam.cullingMask = alienCamLayer;
-            humanCam.cullingMask = baseCamLayer;
+            humanCam.cullingMask = alienCamLayer;
             transImage.material.mainTexture = alienCam.targetTexture;
             camMaterial = transImage.material;
 
@@ -107,13 +107,10 @@ public class TransitionController : MonoBehaviour {
             alienCam.targetTexture = null;
             humanCam.targetTexture = test;
             humanCam.cullingMask = humanCamLayer;
-            alienCam.cullingMask = baseCamLayer;
+            alienCam.cullingMask = humanCamLayer;
             transImage.material.mainTexture = humanCam.targetTexture;
             camMaterial = transImage.material;
 
-
-            //humanCam.depth = 0;
-            //alienCam.depth = 1;
             isAlien = !isAlien;
         }
         
