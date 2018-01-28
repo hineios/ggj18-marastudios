@@ -18,7 +18,7 @@ public class MilkshakeDestroyer : MonoBehaviour {
     {
         if(other.gameObject.transform.name.Contains("shake"))
         {
-            Debug.Log(other.gameObject.transform.name);
+          
             Destroy(other.gameObject);
         }
     }

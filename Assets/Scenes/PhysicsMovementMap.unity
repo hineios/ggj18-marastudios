@@ -241,6 +241,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114652224161395918, guid: 268b7f2a01508404a9a376c67298ee0a,
+        type: 2}
+      propertyPath: Transition
+      value: 
+      objectReference: {fileID: 1707538817}
+    - target: {fileID: 114652224161395918, guid: 268b7f2a01508404a9a376c67298ee0a,
+        type: 2}
+      propertyPath: Listener
+      value: 
+      objectReference: {fileID: 1795693721}
+    - target: {fileID: 114652224161395918, guid: 268b7f2a01508404a9a376c67298ee0a,
+        type: 2}
+      propertyPath: AudioSource
+      value: 
+      objectReference: {fileID: 1915643568}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 268b7f2a01508404a9a376c67298ee0a, type: 2}
   m_IsPrefabParent: 0
@@ -1066,3 +1081,8 @@ GameObject:
   m_PrefabParentObject: {fileID: 1401695379320524, guid: 54bb71ba5936aac49be4c572c6059afb,
     type: 2}
   m_PrefabInternal: {fileID: 779449311}
+--- !u!1 &1915643568 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1723313457861198, guid: aebcbc759a1694a4292c6a7de21d5554,
+    type: 2}
+  m_PrefabInternal: {fileID: 112975365}
