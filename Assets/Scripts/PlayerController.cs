@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Walking", Math.Abs(movement.x) != 0);
 
         newOffset += new Vector2(movement.x * 0.003f, 0);
-        TransTex.material.SetTextureOffset("_Noise", newOffset);
+        if(TransTex != null) TransTex.material.SetTextureOffset("_Noise", newOffset);
 
 
         // Flip player according to direction

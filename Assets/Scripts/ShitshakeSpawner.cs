@@ -23,7 +23,7 @@ public class ShitshakeSpawner : MonoBehaviour {
             if (countdown == 0)
             {
                 GameObject t = Instantiate(prefab, transform.position, Quaternion.identity);
-                countdown = 150;
+                countdown = Random.Range(150, 200);
             }
             else
             {

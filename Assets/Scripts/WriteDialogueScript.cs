@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
+// UnityEditor.UI;
 using UnityEngine.UI;
 
 public class WriteDialogueScript : MonoBehaviour {
@@ -28,6 +28,8 @@ public class WriteDialogueScript : MonoBehaviour {
 
     private int textIndex;
 
+    public bool startSpotlightOff;
+
 	// Use this for initialization
 	void Start () {
        
@@ -37,7 +39,7 @@ public class WriteDialogueScript : MonoBehaviour {
         ProcessDialogue();
         dialogueText.color = textColor;
 
-        
+        if(startSpotlightOff)
         if (spotlight != null)
             spotlight.gameObject.SetActive(false);
     }
@@ -51,12 +53,13 @@ public class WriteDialogueScript : MonoBehaviour {
 
             if (actualtoWrite.Length > textIndex)
             {
-                spotlight.gameObject.SetActive(true);
-                dialogueText.text += actualtoWrite[textIndex].ToString();
-                textIndex++;
-                textTimer = addTextCooldown;
-                
+                if (spotlight != null){
+                    spotlight.gameObject.SetActive(true);
+                    dialogueText.text += actualtoWrite[textIndex].ToString();
+                    textIndex++;
+                    textTimer = addTextCooldown;
 
+                }
             }
             else endedDialogue = true;
         }

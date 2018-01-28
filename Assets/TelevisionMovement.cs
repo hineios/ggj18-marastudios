@@ -37,11 +37,11 @@ public class TelevisionMovement : MonoBehaviour {
 
         else if(movementDir == "Up")
         {
-            this.transform.Translate(0.0f, -0.01f, 0.0f);
+            this.transform.Translate(0.0f, -0.015f, 0.0f);
 
         } else if(movementDir == "Down")
         {
-            this.transform.Translate(0.0f, 0.01f, 0.0f);
+            this.transform.Translate(0.0f, 0.015f, 0.0f);
         }
        
 	}
