@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class MixerController : MonoBehaviour {
 
-    public const float LP_ACTIVE = 300f;
+    public const float LP_ACTIVE = 600f;
     public const float LP_INACTIVE = 22000f;
     public GameObject Listener;
     public GameObject AudioSource;
@@ -48,6 +48,6 @@ public class MixerController : MonoBehaviour {
         SetLowpassCutoff(t.isAlien);
         float d = Mathf.Abs(Listener.transform.position.x - AudioSource.transform.position.x);
 
-        SetVolume(Mathf.Clamp(-d , -40, 0));
+        SetVolume(Mathf.Clamp(-d , -20, 0));
 	}
 }
