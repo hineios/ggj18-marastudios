@@ -24,7 +24,7 @@ public class MilkshakeSpawner : MonoBehaviour {
             if (countdown == 0)
             {
                 Instantiate(prefab, transform.position, Quaternion.identity);
-                countdown = Random.Range(150, 200);
+                countdown = Random.Range(100, 450);
             }
             else
             {
