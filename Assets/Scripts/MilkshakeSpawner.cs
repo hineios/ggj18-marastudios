@@ -8,7 +8,7 @@ public class MilkshakeSpawner : MonoBehaviour {
 
     private GameObject player;
 
-    private int countdown = 0;
+    private int countdown = 10;
 
 	// Use this for initialization
 	void Start () {
