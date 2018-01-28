@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11535329eebb86d41bf1d50be452ef37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothieStrenght: 1000
+  smoothieStrenght: 500
 --- !u!212 &212765183992448082
 SpriteRenderer:
   m_ObjectHideFlags: 1
