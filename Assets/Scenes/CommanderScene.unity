@@ -633,7 +633,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.007352948, b: 0.007352948, a: 1}
+      maxColor: {r: 0.5552552, g: 0.9558824, b: 0.80668324, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -695,7 +695,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -987,10 +987,10 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 15
+    angle: 10
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 1
+    radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
@@ -1103,7 +1103,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -3062,7 +3062,7 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 0.5
     light: {fileID: 76459683}
     randomDistribution: 0
@@ -3851,7 +3851,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115896999}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalPosition: {x: 0, y: -6.89, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 745993178}
@@ -7365,9 +7365,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0.89705884, g: 0.19924542, b: 0.118728384, a: 1}
-  m_Intensity: 50
-  m_Range: 10
+  m_Color: {r: 0.4971886, g: 0.8897059, b: 0.72728497, a: 1}
+  m_Intensity: 15
+  m_Range: 12
   m_SpotAngle: 19.6
   m_CookieSize: 10
   m_Shadows:
@@ -8839,7 +8839,7 @@ MonoBehaviour:
   - Actor: Chief
     dialog: Good luck, and try not to die
     voice: {fileID: 8300000, guid: dddb5eb6a00666b48bf9794c3513305a, type: 3}
-  - Actor: Player
+  - Actor: Player_alien
     dialog: Oh...this is just great...
     voice: {fileID: 8300000, guid: dddb5eb6a00666b48bf9794c3513305a, type: 3}
   PlayerMovieAtDialog: 'Take a look at the latest we received:'
