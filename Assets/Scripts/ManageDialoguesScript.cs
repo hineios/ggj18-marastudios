@@ -204,14 +204,14 @@ public class ManageDialoguesScript : MonoBehaviour
         RenderSettings.ambientIntensity += 0.01f;
         RenderSettings.reflectionIntensity += 0.01f;
 
-        directLight.GetComponent<Light>().intensity += 0.01f;
+        directLight.GetComponent<Light>().intensity += 0.005f;
       
         if (RenderSettings.ambientIntensity >= 1.0f)
         {
            // directLight.SetActive(true);
             turningLightsOn = false;
-            GameObject.Find("Player_alien").GetComponentInChildren<Light>().intensity = 0;
-            GameObject.Find("Chief").GetComponentInChildren<Light>().color = new Color(1, 1, 1);
+            //GameObject.Find("Player_alien").GetComponentInChildren<Light>().intensity = 0;
+           // GameObject.Find("Chief").GetComponentInChildren<Light>().color = new Color(1, 1, 1);
         }
     }
 

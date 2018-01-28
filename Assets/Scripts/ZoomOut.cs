@@ -32,6 +32,6 @@ public class ZoomOut : MonoBehaviour {
                 cam.fieldOfView -= Time.deltaTime * 15;
             }
         }
-        else x.GetComponent<TransitionController>().enabled = true;
+        else x.GetComponent<TransitionController>().startShader();
     }
 }

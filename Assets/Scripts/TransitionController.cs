@@ -28,6 +28,7 @@ public class TransitionController : MonoBehaviour {
     private float tempTexValue;
 
     private bool started;
+    private bool start;
     private float valueTemp;
 
     // Use this for initialization
@@ -41,19 +42,23 @@ public class TransitionController : MonoBehaviour {
         transitioning = false;
         newShaderValue = camMaterial.GetFloat("_Clipping");
 
-        started = false;
+        start = false;
         valueTemp = 0.3f;
+
+        camMaterial.SetFloat("_Clipping", 0.3f);
     }
 	
+    public void startShader() { if(!started)start = true; }
+
 	// Update is called once per frame
 	void Update () {
-        if (!started)
+        if (start)
         {
             valueTemp -= Time.deltaTime * 0.5f;
             camMaterial.SetFloat("_Clipping", valueTemp);
-            if (valueTemp < 0.05f) started = true;
+            if (valueTemp < 0.05f) { started = true; start = false; }
         }
-        else
+        if(started)
         {
             shaderValue = camMaterial.GetFloat("_Clipping");
             if ((Input.GetKeyDown("e") || Input.GetButtonDown("Fire1")) && !transitioning)
