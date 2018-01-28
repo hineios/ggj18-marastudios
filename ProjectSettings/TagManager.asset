@@ -11,6 +11,7 @@ TagManager:
   - Activate
   - Destroythis
   - ObjectiveSong
+  - ObjectiveDisc
   layers:
   - Default
   - TransparentFX
