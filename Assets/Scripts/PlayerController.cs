@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         // Update animator stuff
         anim.SetBool("Walking", Math.Abs(movement.x) != 0);
 
-        newOffset += new Vector2(movement.x * -0.003f, 0);
+        newOffset += new Vector2(movement.x * 0.003f, 0);
         TransTex.material.SetTextureOffset("_Noise", newOffset);
 
 
@@ -97,8 +97,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision Col)
     {
-        Debug.Log(Col);
-
         if (Col.gameObject.tag == "Platform")
         {
             transform.parent = null;

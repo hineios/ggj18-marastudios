@@ -9,10 +9,12 @@ public class TelevisionMovement : MonoBehaviour {
 
     public Transform anchor;
 
+    public Vector3 originalPos;
+
     public string movementDir;
 
 	void Start () {
-		
+        originalPos = this.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -23,13 +25,12 @@ public class TelevisionMovement : MonoBehaviour {
 
             if (!GameObject.Find("Screen").GetComponent<VideoPlayer>().isPlaying)
                 GameObject.Find("Screen").GetComponent<VideoPlayer>().Play();
-           return;
+
+            return;
         }
 
-        if (this.transform.position.y >= anchor.transform.position.y && movementDir == "Up")
+        if (this.transform.position.y >=  originalPos.y && movementDir == "Up")
         {
-            if (GameObject.Find("Screen").GetComponent<VideoPlayer>().isPlaying)
-                GameObject.Find("Screen").GetComponent<VideoPlayer>().Stop();
             return;
         }
 
@@ -37,6 +38,7 @@ public class TelevisionMovement : MonoBehaviour {
         else if(movementDir == "Up")
         {
             this.transform.Translate(0.0f, -0.01f, 0.0f);
+
         } else if(movementDir == "Down")
         {
             this.transform.Translate(0.0f, 0.01f, 0.0f);

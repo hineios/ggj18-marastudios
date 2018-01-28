@@ -16,6 +16,14 @@ public class SmoothieController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-            rig.AddForce(Vector3.right * -smoothieStrenght);
+        transform.Translate(- transform.right *  Time.deltaTime * smoothieStrenght);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            collision.gameObject.transform.position = new Vector3(this.transform.position.x - 1, collision.gameObject.transform.position.y, collision.gameObject.transform.position.z);
+        }
     }
 }
