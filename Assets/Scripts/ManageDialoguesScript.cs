@@ -33,7 +33,11 @@ public class ManageDialoguesScript : MonoBehaviour
 
     public float turnLightsIndex;
 
+    private bool lightsoffOnce = false;
+
     private bool turningLightsOn = false;
+
+    public float endConversationX;
 
     private bool playingMovie = false;
 
@@ -57,14 +61,12 @@ public class ManageDialoguesScript : MonoBehaviour
 
         dialogueScripts = new List<WriteDialogueScript>();
 
-        Debug.Log("Started");
         foreach (var g in GameObject.FindGameObjectsWithTag("Talk"))
         {
-            Debug.Log("Found object with tag wtf");
             dialogueScripts.Add(g.GetComponent<WriteDialogueScript>());
         }
 
-
+        dialogueScripts.Add(GameObject.Find("Player_alien").GetComponent<WriteDialogueScript>());
 
     }
 
@@ -114,6 +116,8 @@ public class ManageDialoguesScript : MonoBehaviour
             TurningOnLights();
         }
 
+        if (GameObject.Find("Player_alien").transform.position.x > endConversationX)
+            EndedDialogue();
      
     }
 
@@ -132,7 +136,7 @@ public class ManageDialoguesScript : MonoBehaviour
        var d = GameObject.FindGameObjectsWithTag("ToDestroy");
         foreach (var o in d)
             Destroy(o);
-
+        lightsoffOnce = true;
         turningLightsOn = true;
     //    RenderSettings.ambientLight = new Color(0.5f, 0.5f,0.5f);
        
@@ -158,7 +162,7 @@ public class ManageDialoguesScript : MonoBehaviour
 
             var dialog = dialoguesList[index].dialog;
 
-            target = dialogueScripts.Find(x => x.gameObject.name == Name);
+            target = dialogueScripts.Find(x => x.name == Name);
 
             target.setDialogueToWrite(dialog);
 
@@ -176,7 +180,7 @@ public class ManageDialoguesScript : MonoBehaviour
 
             index++;
 
-        }
+        } 
             
     }
 
@@ -200,13 +204,29 @@ public class ManageDialoguesScript : MonoBehaviour
         RenderSettings.ambientIntensity += 0.01f;
         RenderSettings.reflectionIntensity += 0.01f;
 
-       // directLight.GetComponent<Light>().intensity += 0.005f;
+        directLight.GetComponent<Light>().intensity += 0.005f;
       
         if (RenderSettings.ambientIntensity >= 1.0f)
         {
            // directLight.SetActive(true);
             turningLightsOn = false;
-            GameObject.Find("Player").GetComponentInChildren<Light>().intensity = 0;
+            //GameObject.Find("Player_alien").GetComponentInChildren<Light>().intensity = 0;
+           // GameObject.Find("Chief").GetComponentInChildren<Light>().color = new Color(1, 1, 1);
         }
+    }
+
+
+    public void EndedDialogue()
+    {
+        foreach (var o in GameObject.FindGameObjectsWithTag("Destroythis"))
+            Destroy(o);
+        if (lightsoffOnce == false)
+            TurnLightingOn();
+
+
+        var audioSource = GameObject.FindGameObjectWithTag("ObjectiveSong").GetComponent<AudioSource>();
+
+        if (!audioSource.isPlaying)
+            audioSource.Play();
     }
 }

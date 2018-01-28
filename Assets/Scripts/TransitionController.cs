@@ -27,6 +27,10 @@ public class TransitionController : MonoBehaviour {
 
     private float tempTexValue;
 
+    private bool started;
+    private bool start;
+    private float valueTemp;
+
     // Use this for initialization
     void Start () {
         test =  new RenderTexture(Screen.width, Screen.height, 24);
@@ -37,54 +41,71 @@ public class TransitionController : MonoBehaviour {
         grow = true;
         transitioning = false;
         newShaderValue = camMaterial.GetFloat("_Clipping");
+
+        start = false;
+        valueTemp = 0.3f;
+
+        camMaterial.SetFloat("_Clipping", 0.3f);
     }
 	
+    public void startShader() { if(!started)start = true; }
+
 	// Update is called once per frame
 	void Update () {
-        shaderValue = camMaterial.GetFloat("_Clipping");
-        if ((Input.GetKeyDown("e") || Input.GetButtonDown("Fire1")) && !transitioning)
+        if (start)
         {
-            //Transition();
-            transitioning = true;
+            valueTemp -= Time.deltaTime * 0.5f;
+            camMaterial.SetFloat("_Clipping", valueTemp);
+            if (valueTemp < 0.05f) { started = true; start = false; }
         }
-
-        if (isAlien)
+        if(started)
         {
-            human.transform.position = new Vector3(alien.transform.position.x, alien.transform.position.y - 37, alien.transform.position.z);
-        } else
-        {
-            alien.transform.position = new Vector3(human.transform.position.x, human.transform.position.y + 37, human.transform.position.z);
-        }
-
-        if (transitioning)
-        {
-            newShaderValue = shaderValue;
-            if (grow && shaderValue > -0.05f)
+            shaderValue = camMaterial.GetFloat("_Clipping");
+            if ((Input.GetKeyDown("e") || Input.GetButtonDown("Fire1")) && !transitioning)
             {
-                newShaderValue -= Time.deltaTime * 0.5f;
-                camMaterial.SetFloat("_Clipping", newShaderValue);
-            }
-            if (grow && shaderValue <= -0.05)
-            {
-                grow = false;
-                Transition();
-            }
-            if (!grow && shaderValue < tempTexValue)
-            {
-                newShaderValue += Time.deltaTime * 0.5f;
-                camMaterial.SetFloat("_Clipping", newShaderValue);
-            }
-            if (!grow && shaderValue >= tempTexValue)
-            {
-                grow = true;
-                transitioning = false;
+                //Transition();
+                transitioning = true;
             }
 
-        }
-        else
-        {
-            camMaterial.SetFloat("_Clipping", Mathf.PingPong(Time.time * 0.04f, 0.04f) + 0.03f);
-            tempTexValue = camMaterial.GetFloat("_Clipping");
+            if (isAlien)
+            {
+                human.transform.position = new Vector3(alien.transform.position.x, alien.transform.position.y - 37, alien.transform.position.z);
+            }
+            else
+            {
+                alien.transform.position = new Vector3(human.transform.position.x, human.transform.position.y + 37, human.transform.position.z);
+            }
+
+            if (transitioning)
+            {
+                newShaderValue = shaderValue;
+                if (grow && shaderValue > -0.05f)
+                {
+                    newShaderValue -= Time.deltaTime * 0.5f;
+                    camMaterial.SetFloat("_Clipping", newShaderValue);
+                }
+                if (grow && shaderValue <= -0.05)
+                {
+                    grow = false;
+                    Transition();
+                }
+                if (!grow && shaderValue < tempTexValue)
+                {
+                    newShaderValue += Time.deltaTime * 0.5f;
+                    camMaterial.SetFloat("_Clipping", newShaderValue);
+                }
+                if (!grow && shaderValue >= tempTexValue)
+                {
+                    grow = true;
+                    transitioning = false;
+                }
+
+            }
+            else
+            {
+                camMaterial.SetFloat("_Clipping", Mathf.PingPong(Time.time * 0.04f, 0.04f) + 0.03f);
+                tempTexValue = camMaterial.GetFloat("_Clipping");
+            }
         }
 
     }
