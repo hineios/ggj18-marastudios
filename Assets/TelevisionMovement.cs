@@ -23,14 +23,11 @@ public class TelevisionMovement : MonoBehaviour {
 
             if (!GameObject.Find("Screen").GetComponent<VideoPlayer>().isPlaying)
                 GameObject.Find("Screen").GetComponent<VideoPlayer>().Play();
-           return;
         }
 
         if (this.transform.position.y >= anchor.transform.position.y && movementDir == "Up")
         {
-            if (GameObject.Find("Screen").GetComponent<VideoPlayer>().isPlaying)
-                GameObject.Find("Screen").GetComponent<VideoPlayer>().Stop();
-            return;
+
         }
 
 

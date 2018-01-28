@@ -55,12 +55,12 @@ public class WriteDialogueScript : MonoBehaviour {
                 dialogueText.text += actualtoWrite[textIndex].ToString();
                 textIndex++;
                 textTimer = addTextCooldown;
-                spotlight.intensity += 0.3f;
+                
 
             }
             else endedDialogue = true;
         }
-        else spotlight.intensity -= 0.01f;
+     
 
 
     }
@@ -79,7 +79,7 @@ public class WriteDialogueScript : MonoBehaviour {
         textTimer = addTextCooldown;
         endedDialogue = false;
         actualtoWrite = toWrite.ToCharArray();
-        spotlight.intensity = originalSpotIntensity;
+        
     }
 
     public bool endedCurrentDialogue()

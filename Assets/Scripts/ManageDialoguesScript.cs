@@ -35,6 +35,12 @@ public class ManageDialoguesScript : MonoBehaviour
 
     private bool turningLightsOn = false;
 
+    private bool playingMovie = false;
+
+    public float movieDuration;
+
+    private float actuaMovieDuration;
+
     private int index = 0;
     // Use this for initialization
     void Awake()
@@ -44,6 +50,8 @@ public class ManageDialoguesScript : MonoBehaviour
         TurnLightingOff();
 
         actualCountDown = changeTextCooldown;
+
+        actuaMovieDuration = movieDuration;
 
         index = 0;
 
@@ -63,6 +71,15 @@ public class ManageDialoguesScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (playingMovie)
+        {
+            actualCountDown -= Time.deltaTime * 0.01f;
+
+            if (actualCountDown <= 0)
+                StopMovie();
+
+        } else
 
         if (getTargetEndedSpeaking())
         {
@@ -94,6 +111,8 @@ public class ManageDialoguesScript : MonoBehaviour
         {
             TurningOnLights();
         }
+
+     
     }
 
     public void TurnLightingOff()
@@ -162,9 +181,15 @@ public class ManageDialoguesScript : MonoBehaviour
 
     void PlayMovie()
     {
+        playingMovie = true;
         GameObject.Find("Television").GetComponent<TelevisionMovement>().Move("Down");
     }
 
+    void StopMovie()
+    {
+        GameObject.Find("Screen").GetComponent<VideoPlayer>().Stop();
+        GameObject.Find("Television").GetComponent<TelevisionMovement>().Move("Up");
+    }
 
     void TurningOnLights()
     {
@@ -172,12 +197,13 @@ public class ManageDialoguesScript : MonoBehaviour
         RenderSettings.ambientIntensity += 0.01f;
         RenderSettings.reflectionIntensity += 0.01f;
 
-        directLight.GetComponent<Light>().intensity += 0.01f;
+       // directLight.GetComponent<Light>().intensity += 0.005f;
       
         if (RenderSettings.ambientIntensity >= 1.0f)
         {
-            directLight.SetActive(true);
+           // directLight.SetActive(true);
             turningLightsOn = false;
+            GameObject.Find("Player").GetComponentInChildren<Light>().intensity = 0;
         }
     }
 }
