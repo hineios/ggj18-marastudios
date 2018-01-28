@@ -18,7 +18,6 @@ public class Switcher : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("W( WAT===");
         if(other.gameObject.tag == "Talk")
         {
             activatables.SetActive(true);

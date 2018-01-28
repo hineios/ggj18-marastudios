@@ -9,6 +9,8 @@ TagManager:
   - Talk
   - Alo
   - Activate
+  - Destroythis
+  - ObjectiveSong
   layers:
   - Default
   - TransparentFX
