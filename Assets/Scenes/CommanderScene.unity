@@ -4110,7 +4110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 208333368}
   m_LocalRotation: {x: -0.1369519, y: -0, z: -0, w: 0.99057776}
-  m_LocalPosition: {x: -1.08, y: 0.24, z: 4.1}
+  m_LocalPosition: {x: -0.52, y: -0.18, z: 4.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2022979706}
@@ -4883,6 +4883,90 @@ Transform:
   m_Father: {fileID: 2022979706}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &528304755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 528304759}
+  - component: {fileID: 528304758}
+  - component: {fileID: 528304757}
+  - component: {fileID: 528304756}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &528304756
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528304755}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 4c02b4954f10fa04fa80d471cf572caf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &528304757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528304755}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &528304758
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528304755}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &528304759
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528304755}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -76.42, y: -10.15, z: -0.11}
+  m_LocalScale: {x: 2, y: 2, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!20 &559576593
 Camera:
   m_ObjectHideFlags: 0
@@ -4951,7 +5035,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ba75e831379e0ee45baef626b0247d23, type: 2}
+  - {fileID: 2100000, guid: 7b2d2c579df90bb4ab6640b76da96cc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6287,7 +6371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.026, y: 0.731}
+  m_AnchoredPosition: {x: 0.026, y: 0.76}
   m_SizeDelta: {x: 12, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984573788
@@ -7554,7 +7638,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1458219401}
   m_LocalRotation: {x: 0.00071785384, y: 0.17729144, z: 0.9841501, w: -0.0039848285}
-  m_LocalPosition: {x: -0.51, y: 3.93, z: 4.19}
+  m_LocalPosition: {x: -0.33, y: 3.93, z: 4.19}
   m_LocalScale: {x: 4, y: 1.8, z: 0.1}
   m_Children:
   - {fileID: 713589266}
@@ -8877,49 +8961,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguesList:
   - Actor: Chief
-    dialog: Who dares to awaken me!?
+    dialog: Who interrupts my slumber?
     voice: {fileID: 8300000, guid: dddb5eb6a00666b48bf9794c3513305a, type: 3}
   - Actor: Player_alien
-    dialog: I think you called me sir...
+    dialog: I think you summoned me chief...
     voice: {fileID: 8300000, guid: bde2748b18385e24797d5f4c356ffe93, type: 3}
   - Actor: Chief
-    dialog: Otsenre! I did call indeeed!
+    dialog: Oh yes, I did call you indeed!
     voice: {fileID: 8300000, guid: 9228cfc2273963841ad37f4a0da5d36e, type: 3}
   - Actor: Chief
-    dialog: Once again I'm afraid we need you
+    dialog: I'm afraid I have a job for you
     voice: {fileID: 8300000, guid: e4b8f7b561ea42f48b01e97ab84a2a1a, type: 3}
   - Actor: Player_alien
     dialog: Could you just turn on the lights?
     voice: {fileID: 8300000, guid: 38748ef65e32f0e41bd8f8e08e98126c, type: 3}
   - Actor: Chief
-    dialog: Uhm, sure, anyways, we've been receiving some weird transmissions...
+    dialog: If you insist...Moving on, we've been receiving some weird transmissions
+    voice: {fileID: 8300000, guid: cb4e21bbe1bc9734d9bff266dfbbbe33, type: 3}
+  - Actor: Player
+    dialog: Is that a painting of me?
     voice: {fileID: 8300000, guid: cb4e21bbe1bc9734d9bff266dfbbbe33, type: 3}
   - Actor: Chief
-    dialog: 'I don''t understand them, look at this:'
+    dialog: Don't think about it too much
+    voice: {fileID: 8300000, guid: cb4e21bbe1bc9734d9bff266dfbbbe33, type: 3}
+  - Actor: Chief
+    dialog: 'Take a look at the latest we received:'
     voice: {fileID: 8300000, guid: 8efa391204605c54aaecbf92fba99b50, type: 3}
   - Actor: Player_alien
     dialog: Oh God, its from Earth isn't it?
     voice: {fileID: 8300000, guid: 38748ef65e32f0e41bd8f8e08e98126c, type: 3}
   - Actor: Chief
-    dialog: It is and I love it and I must learn their ways
+    dialog: It is and guess where you are going next!?
     voice: {fileID: 8300000, guid: e4b8f7b561ea42f48b01e97ab84a2a1a, type: 3}
   - Actor: Player_alien
     dialog: Not again, not like this
     voice: {fileID: 8300000, guid: a62524c5eceb1d049bac9817861af62a, type: 3}
   - Actor: Chief
-    dialog: You shall go there and retrieve an artifact that os sending these transmissions!
+    dialog: That's right, I need you to go there and retrieve an artifact that is
+      sending these transmissions!
     voice: {fileID: 8300000, guid: 8efa391204605c54aaecbf92fba99b50, type: 3}
   - Actor: Chief
-    dialog: Use our Dimension Twister to go there
+    dialog: You can use our Dimension Twister to hop between this spaceship and their
+      planet
     voice: {fileID: 0}
   - Actor: Chief
-    dialog: Good luck, and try not to die will you
+    dialog: Good luck, and try not to die
+    voice: {fileID: 8300000, guid: dddb5eb6a00666b48bf9794c3513305a, type: 3}
+  - Actor: Player
+    dialog: Oh...this is just great...
     voice: {fileID: 8300000, guid: dddb5eb6a00666b48bf9794c3513305a, type: 3}
   PlayerMovieAtDialog: 'I don''t understand them, look at this:'
   changeTextCooldown: 2
   turnLightsIndex: 5
   endConversationX: -70
-  movieDuration: 30
+  movieDuration: 55
 --- !u!4 &2045576801
 Transform:
   m_ObjectHideFlags: 0
