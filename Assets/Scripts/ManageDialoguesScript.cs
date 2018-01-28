@@ -74,10 +74,12 @@ public class ManageDialoguesScript : MonoBehaviour
 
         if (playingMovie)
         {
-            actualCountDown -= Time.deltaTime * 0.01f;
+            actualCountDown -= Time.deltaTime * 0.1f;
 
             if (actualCountDown <= 0)
                 StopMovie();
+
+            else return;
 
         } else
 
@@ -189,6 +191,7 @@ public class ManageDialoguesScript : MonoBehaviour
     {
         GameObject.Find("Screen").GetComponent<VideoPlayer>().Stop();
         GameObject.Find("Television").GetComponent<TelevisionMovement>().Move("Up");
+        playingMovie = false;
     }
 
     void TurningOnLights()
