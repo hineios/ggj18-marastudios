@@ -10076,7 +10076,7 @@ MonoBehaviour:
     dialog: Don't think about it too much
     voice: {fileID: 8300000, guid: cb4e21bbe1bc9734d9bff266dfbbbe33, type: 3}
   - Actor: Chief
-    dialog: 'Take a look at the transmission latest we received:'
+    dialog: 'Take a look at the latest transmission we received:'
     voice: {fileID: 8300000, guid: 8efa391204605c54aaecbf92fba99b50, type: 3}
   - Actor: Player_alien
     dialog: Oh God, its from Earth isn't it?
@@ -10101,7 +10101,7 @@ MonoBehaviour:
   - Actor: Player_alien
     dialog: Oh...this is just great...
     voice: {fileID: 8300000, guid: dddb5eb6a00666b48bf9794c3513305a, type: 3}
-  PlayerMovieAtDialog: 'Take a look at the latest we received:'
+  PlayerMovieAtDialog: 'Take a look at the latest transmission we received:'
   changeTextCooldown: 2
   turnLightsIndex: 5
   endConversationX: -70
