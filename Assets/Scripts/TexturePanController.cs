@@ -28,7 +28,6 @@ public class TexturePanController : MonoBehaviour {
     {
         if (other.tag != "Player" && other.name != "CameraZoom" && other.name != "Switch" && this.GetComponentInParent<Rigidbody>().detectCollisions)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + other.name);
             this.parent.GetComponent<PlayerController>().canPan = true;
         }
     }
