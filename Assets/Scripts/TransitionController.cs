@@ -115,9 +115,14 @@ public class TransitionController : MonoBehaviour {
         if (isAlien)
         {
 
-            human.GetComponent<Rigidbody>().detectCollisions = true;
+            human.GetComponent<Rigidbody>().detectCollisions = true; 
             human.GetComponent<Rigidbody>().velocity = alien.GetComponent<Rigidbody>().velocity;
             alien.GetComponent<Rigidbody>().detectCollisions = false;
+
+            alien.GetComponent<PlayerController>().canPan = false;
+            human.GetComponent<PlayerController>().canPan = true;
+            alien.GetComponentInChildren<TexturePanController>().enabled = false;
+            human.GetComponentInChildren<TexturePanController>().enabled = true;
 
             humanCam.targetTexture = null;
             alienCam.targetTexture = test;
@@ -133,6 +138,11 @@ public class TransitionController : MonoBehaviour {
             alien.GetComponent<Rigidbody>().detectCollisions = true;
             alien.GetComponent<Rigidbody>().velocity = human.GetComponent<Rigidbody>().velocity;
             human.GetComponent<Rigidbody>().detectCollisions = false;
+
+            human.GetComponent<PlayerController>().canPan = false;
+            alien.GetComponent<PlayerController>().canPan = true;
+            human.GetComponentInChildren<TexturePanController>().enabled = false;
+            alien.GetComponentInChildren<TexturePanController>().enabled = true;
 
             alienCam.targetTexture = null;
             humanCam.targetTexture = test;

@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 movement;
 
+    public bool canPan;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         baseY = 0;
+        canPan = true;
+       
     }
 
     void Update()
@@ -48,8 +52,12 @@ public class PlayerController : MonoBehaviour
         // Update animator stuff
         anim.SetBool("Walking", Math.Abs(movement.x) != 0);
 
-        newOffset += new Vector2(movement.x * 0.003f, 0);
-        if(TransTex != null) TransTex.material.SetTextureOffset("_Noise", newOffset);
+        //TODO: FIX
+       if(canPan)
+        {
+            newOffset += new Vector2(movement.x * 0.007f, 0);
+            if (TransTex != null) TransTex.material.SetTextureOffset("_Noise", newOffset);
+        }
 
 
         // Flip player according to direction
