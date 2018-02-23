@@ -37,7 +37,8 @@ public class TransitionController : MonoBehaviour {
         humanCam.targetTexture = test;
         transImage.material.mainTexture = humanCam.targetTexture;
         camMaterial = transImage.material;
-        isAlien = true;
+        isAlien = false;
+        Transition();
         grow = true;
         transitioning = false;
         newShaderValue = camMaterial.GetFloat("_Clipping");
